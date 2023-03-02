@@ -15,73 +15,99 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="icon" href="icons/favicon.ico?v=1.1">
 
-    <title>Table</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+
+    <title>Goods Table</title>
 </head>
 
 <body>
-    <div class="title">Goods Table</div>
-    <button id="addButton" class="addButton button">Add Product</button>
-    <div class="overlay">
-        <div class="modal">
-            <div class="modal__close">&times;</div>
-            <div class="modal__title">Fill the Form</div>
-            <form>
-                <div class="input-row">
-                    <label class="input-label" for="name">Product name</label>
-                    <input type="text" required name="name" id="name" />
-                </div>
-                <div class="input-row">
-                    <label class="input-label" for="country">Country</label>
-                    <button type="button" class="dropbtn" id="country">...</button>
-                    <div id="dropdown" class="dropdown-content">
-                        <input type="text" placeholder="Search..." id="search">
-                        <p>Poland</p>
-                        <p>Germany</p>
-                        <p>Greece</p>
-                        <p>Spain</p>
-                        <p>Italy</p>
-                        <p>France</p>
-                        <p>Switzerland</p>
-                        <p>Canada</p>
-                        <p>Turkey</p>
-                        <p>Finland</p>
+    <header>
+        <div class="title">Goods Table</div>
+    </header>
+    <main>
+        <button id="addButton" class="addButton button">Add Product</button>
+        <div class="overlay">
+            <div class="modal">
+                <div class="modal__close">&times;</div>
+                <div class="modal__title">Fill the Form</div>
+                <form id="form" name="form">
+                    <div class="input-row">
+                        <label class="input-label" for="name">Product name</label>
+                        <input type="text" required name="name" id="name" />
                     </div>
-                    <p id="warning" class="warning hide-warning">* required</p>
-                </div>
-                <div class="input-row">
-                    <label class="input-label" for="quantity">Quantity</label>
-                    <input type="number" min="1" step="1" name="quantity" value="1" id="quantity" />
-                </div>
-                <div class="input-row">
-                    <label class="input-label" for="price">Price</label>
-                    <input type="number" min="0" step="0.1" required name="price" id="price" />
-                </div>
-                <div class="button-block">
-                    <button type="reset" id="cancelButton" class="formButton button">Cancel</button>
-                    <button type="submit" id="submitButton" class="formButton button">Submit</button>
-                </div>
-            </form>
+                    <div class="input-row">
+                        <label class="input-label" for="country">Country</label>
+                        <button type="button" class="dropbtn" id="country">...</button>
+                        <div id="dropdown" class="dropdown-content">
+                            <input type="text" placeholder="Search..." id="search">
+                            <p>Poland</p>
+                            <p>Germany</p>
+                            <p>Greece</p>
+                            <p>Spain</p>
+                            <p>Italy</p>
+                            <p>France</p>
+                            <p>Switzerland</p>
+                            <p>Canada</p>
+                            <p>Turkey</p>
+                            <p>Finland</p>
+                        </div>
+                        <p id="warning" class="warning hide-warning">* required</p>
+                    </div>
+                    <div class="input-row">
+                        <label class="input-label" for="quantity">Quantity</label>
+                        <input type="number" min="1" step="1" name="quantity" value="1" id="quantity" />
+                    </div>
+                    <div class="input-row">
+                        <label class="input-label" for="price">Price</label>
+                        <input type="number" min="0" step="0.1" required name="price" id="price" />
+                    </div>
+                    <div class="button-block">
+                        <button type="reset" id="cancelButton" class="formButton button">Cancel</button>
+                        <button type="submit" id="submitButton" class="formButton button">Submit</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
-    <table id="table" class="table">
-        <thead class="table__head">
-            <tr class="table__row">
-                <th>Product name</th>
-                <th>Country</th>
-                <th>Quantity</th>
-                <th>Price, $</th>
-                <th>Price with tax (25%), $</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody class="table__body">
+        <table id="table" class="table draggable-table">
+            <thead class="table__head">
+                <tr class="table__row">
+                    <th id="productColumn">
+                        Product name
+                        <img class="sortIcon" src="icons/sort.svg" alt="sort" height="15px">
+                    </th>
+                    <th>Country</th>
+                    <th>Quantity</th>
+                    <th id="priceColumn">
+                        Price, $
+                        <img class="sortIcon" src="icons/sort.svg" alt="sort" height="15px">
+                    </th>
+                    <th>Price with tax (25%), $</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody class="table__body">
 
-        </tbody>
-    </table>
-    <div class="total">
-        <p>Total: $<span id="total"></span></p>
-    </div>
+            </tbody>
+        </table>
+        <div class="total">
+            <p>Total: $<span id="total"></span></p>
+        </div>
+    </main>
     <script type="module" src="js/app.js"></script>
+
+    <script type="text/javascript">
+        $(".table__body").sortable({
+            delay: 100,
+            stop: function () {
+                var selectedRow = new Array();
+                $('.table__body>tr').each(function () {
+                    selectedRow.push($(this).attr("id"));
+                });
+            }
+        });
+    </script>
+
 </body>
 
 </html>

@@ -15,6 +15,7 @@ body {
     border: 2px solid #808080;
     border-radius: 10px;
 }
+
 .button:hover {
     background-color: #cccccc;
 }
@@ -37,6 +38,7 @@ body {
     border-radius: 5px;
     padding: 3px 10px;
 }
+
 .deleteButton:hover {
     background-color: #cccccc;
 }
@@ -66,8 +68,21 @@ table th {
     background-color: antiquewhite;
 }
 
+.table__body {
+    cursor: move;
+}
+
 .table__default {
     font-style: italic;
+}
+
+#productColumn,
+#priceColumn  {
+    cursor: pointer;
+}
+
+.sortIcon {
+    margin-left: 5px;
 }
 
 .overlay {
@@ -121,6 +136,7 @@ input {
     padding: 5px;
     width: 200px;
 }
+
 input:focus {
     background-color: #d4d4d4;
 }
@@ -130,9 +146,11 @@ input:focus {
     margin: 0;
     text-align: center;
 }
+
 .show-warning {
     display: block;
 }
+
 .hide-warning {
     display: none;
 }
@@ -152,7 +170,7 @@ input:focus {
     font-size: 1.2rem;
     cursor: pointer;
     background-color: #fff;
-    background-image: url('icons/Dropdown.png');
+    background-image: url('icons/dropdown.webp');
     background-position: 190px 12px;
     background-repeat: no-repeat;
     border: 1px solid #808080;
@@ -160,7 +178,7 @@ input:focus {
 
 #search {
     box-sizing: border-box;
-    background-image: url('icons/Search.png');
+    background-image: url('icons/search.webp');
     background-position: 14px 15px;
     background-repeat: no-repeat;
     font-size: 16px;
@@ -210,4 +228,5 @@ input:focus {
 .show {
     display: block;
 }
+
 /* Dropdown */

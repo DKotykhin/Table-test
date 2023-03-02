@@ -1,20 +1,22 @@
 import sumValue from "./sumValue.js";
-import { modalFn, closeModal } from "./modal.js";
 import dropdownFn from "./dropdown.js";
+import sortTableFn from "./sortTable.js";
+import { modalFn, closeModal } from "./modal.js";
 
 window.addEventListener('DOMContentLoaded', () => {
 
     const table = document.getElementById('table').getElementsByTagName('tbody')[0];
     const tableBody = document.querySelector('.table__body').getElementsByTagName("tr");
     const warning = document.querySelector('#warning');
-
     const form = document.querySelector("form");
+
     const emptyMessage = 'There is no products yet';
     const defaultRow = `<td colspan="6" class="table__default">${emptyMessage}</td>`;
 
     modalFn();
     dropdownFn();
-
+    sortTableFn();
+  
     const removeDefaultRow = () => {
         if (tableBody[0] && tableBody[0].innerText === emptyMessage) {
             tableBody[0].remove()
@@ -48,7 +50,7 @@ window.addEventListener('DOMContentLoaded', () => {
             <td>${data.name}</td>
             <td>${data.country}</td>
             <td>${data.quantity}</td>
-            <td>${data.price}</td>
+            <td>${+data.price}</td>
             <td>${+data.quantity * +data.price * 1.25}</td>
             <td><button class='deleteButton'>Delete</button></td>
         `;
@@ -57,10 +59,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const addRow = (e) => {
         e.preventDefault();
-        const name = document.getElementById("name").value;
-        const quantity = document.getElementById("quantity").value;
-        const price = document.getElementById("price").value;
-        const country = document.querySelector('.dropbtn').innerHTML;
+        const name = document.forms['form']['name'].value;
+        const quantity = document.forms['form']['quantity'].value;
+        const price = document.forms['form']['price'].value;
+        const country = document.querySelector('#country').innerHTML;
         if (country === '...') {
             warning.classList.remove('hide-warning')
             warning.classList.add('show-warning')
