@@ -1,7 +1,9 @@
-import sumValue from "./sumValue.js";
-import dropdownFn from "./dropdown.js";
-import sortTableFn from "./sortTable.js";
-import { modalFn, closeModal } from "./modal.js";
+import sumValue from "./modules/sumValue.js";
+import { modalFn, closeModal } from "./modules/modal.js";
+
+import "./modules/dropdown.js";
+import "./modules/sortTable.js";
+import './modules/dragNDrop.js';
 
 window.addEventListener('DOMContentLoaded', () => {
 
@@ -14,8 +16,6 @@ window.addEventListener('DOMContentLoaded', () => {
     const defaultRow = `<td colspan="6" class="table__default">${emptyMessage}</td>`;
 
     modalFn();
-    dropdownFn();
-    sortTableFn();
   
     const removeDefaultRow = () => {
         if (tableBody[0] && tableBody[0].innerText === emptyMessage) {

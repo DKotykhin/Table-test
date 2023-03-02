@@ -96,18 +96,6 @@
     </main>
     <script type="module" src="js/app.js"></script>
 
-    <script type="text/javascript">
-        $(".table__body").sortable({
-            delay: 100,
-            stop: function () {
-                var selectedRow = new Array();
-                $('.table__body>tr').each(function () {
-                    selectedRow.push($(this).attr("id"));
-                });
-            }
-        });
-    </script>
-
 </body>
 
 </html>

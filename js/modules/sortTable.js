@@ -53,9 +53,5 @@ const sortTable = (n, sortRule) => {
     }
 };
 
-const sortTableFn = () => {
-    productColumn.addEventListener('click', () => sortTable(0, 'text'));
-    priceColumn.addEventListener('click', () => sortTable(3, 'number'));
-}
-
-export default sortTableFn;
+productColumn.addEventListener('click', () => sortTable(0, 'text'));
+priceColumn.addEventListener('click', () => sortTable(3, 'number'));
