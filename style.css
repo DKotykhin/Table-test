@@ -1,0 +1,213 @@
+body {
+    font-family: Nunito, sans-serif;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.button {
+    font-size: 1.2rem;
+    cursor: pointer;
+    border: 2px solid #808080;
+    border-radius: 10px;
+}
+.button:hover {
+    background-color: #cccccc;
+}
+
+.addButton {
+    margin: 20px 20px 40px;
+    padding: 10px 25px;
+
+}
+
+.formButton {
+    margin: 30px 10px 20px 0;
+    padding: 5px 15px;
+}
+
+.deleteButton {
+    cursor: pointer;
+    color: #ff0000;
+    border: 1px solid #808080;
+    border-radius: 5px;
+    padding: 3px 10px;
+}
+.deleteButton:hover {
+    background-color: #cccccc;
+}
+
+.button-block {
+    display: flex;
+    justify-content: end;
+}
+
+table {
+    margin: 10px;
+}
+
+table, th, td {
+    border: 2px solid #808080;
+    padding: 5px 10px;
+    font-size: 1.2rem;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+table th {
+    min-width: 100px;
+}
+
+.table__row {
+    background-color: antiquewhite;
+}
+
+.table__default {
+    font-style: italic;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 400px;
+    background-color: antiquewhite;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.modal__close {
+    position: absolute;
+    top: -50px;
+    right: -40px;
+    font-size: 2.5rem;
+    color: #ff0000;
+    cursor: pointer;
+}
+
+.modal__title {
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.input-row {
+    margin: 10px;
+    font-size: 1.2rem;
+}
+
+.input-label {
+    display: inline-block;
+    width: 130px;
+}
+
+input {
+    font-size: 1.1rem;
+    padding: 5px;
+    width: 200px;
+}
+input:focus {
+    background-color: #d4d4d4;
+}
+
+.warning {
+    color: #ff0000;
+    margin: 0;
+    text-align: center;
+}
+.show-warning {
+    display: block;
+}
+.hide-warning {
+    display: none;
+}
+
+.total {
+    font-size: 1.5rem;
+    margin: 20px;
+    font-weight: 700;
+}
+
+
+/* Dropdown */
+.dropbtn {
+    text-align: left;
+    min-width: 214px;
+    padding: 5px 5px 5px 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    background-color: #fff;
+    background-image: url('icons/Dropdown.png');
+    background-position: 190px 12px;
+    background-repeat: no-repeat;
+    border: 1px solid #808080;
+}
+
+#search {
+    box-sizing: border-box;
+    background-image: url('icons/Search.png');
+    background-position: 14px 15px;
+    background-repeat: no-repeat;
+    font-size: 16px;
+    padding: 14px 20px 12px 45px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+}
+
+#search:focus {
+    outline: 1px solid #d4d4d4;
+    background-color: #f6f6f6;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    width: 200px;
+    height: 199px;
+    overflow-y: scroll;
+    display: none;
+    position: absolute;
+    right: 0;
+    margin-right: 10px;
+    background-color: #f6f6f6;
+    min-width: 230px;
+    border: 1px solid #ddd;
+    z-index: 1;
+}
+
+.dropdown-content p {
+    color: black;
+    margin: 0;
+    padding: 10px 16px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+}
+
+.dropdown-content p:hover {
+    background-color: #d4d4d4
+}
+
+.show {
+    display: block;
+}
+/* Dropdown */
