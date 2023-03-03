@@ -1,9 +1,9 @@
 import sumValue from "./modules/sumValue.js";
 import { modalFn, closeModal } from "./modules/modal.js";
 
-import dropdown from "./modules/dropdown.js";
-import sortTableFn from "./modules/sortTable.js";
-import dragNDrop from './modules/dragNDrop.js';
+import "./modules/dropdown.js";
+import "./modules/sortTable.js";
+import './modules/dragNDrop.js';
 
 window.addEventListener('DOMContentLoaded', () => {
 
@@ -16,9 +16,6 @@ window.addEventListener('DOMContentLoaded', () => {
     const defaultRow = `<td colspan="6" class="table__default">${emptyMessage}</td>`;
 
     modalFn();
-    dropdown();
-    sortTableFn();
-    dragNDrop();
 
     const removeDefaultRow = () => {
         if (tableBody[0] && tableBody[0].innerText === emptyMessage) {
@@ -122,7 +119,7 @@ window.addEventListener('DOMContentLoaded', () => {
         for (let i = 0; i < tableBody.length; i++) {
             const td = tableBody[i].querySelector('.editIcon');
             const tdCell = tableBody[i];
-            td.addEventListener('click', () => {
+            td && td.addEventListener('click', () => {
                 const updatedProductName = td.closest('tr').cells[0].innerText.trim();
                 let div = document.createElement("div");
                 if (!tdCell.cells[0].querySelector('input')) {
