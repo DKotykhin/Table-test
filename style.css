@@ -38,9 +38,21 @@ body {
     border-radius: 5px;
     padding: 3px 10px;
 }
+.updateButton {
+    cursor: pointer;
+    color: #008822;
+    border: 1px solid #808080;
+    border-radius: 5px;
+    padding: 3px 10px;
+    margin-bottom: 5px;
+}
 
-.deleteButton:hover {
+.deleteButton:hover,
+.updateButton:hover {
     background-color: #cccccc;
+}
+.updateInput {
+    margin: 10px 0;
 }
 
 .button-block {
@@ -83,6 +95,12 @@ table th {
 
 .sortIcon {
     margin-left: 5px;
+}
+
+.editIcon {
+    margin-left: 8px;
+    opacity: 0.7;
+    cursor: pointer;
 }
 
 .overlay {

@@ -6,6 +6,7 @@ const modalClose = document.querySelector('.modal__close');
 const overlay = document.querySelector('.overlay');
 const warning = document.querySelector('#warning');
 const dropdownList = document.querySelector("#dropdown");
+const form = document.querySelector("form");
 
 const openModal = () => {
     overlay.style.display = 'block';
@@ -20,6 +21,7 @@ export const closeModal = () => {
     document.body.style.overflow = "";
     const field = document.querySelector('.dropbtn');
     field.innerHTML = '...';
+    form.reset();
 };
 
 export const modalFn = () => {

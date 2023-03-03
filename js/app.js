@@ -1,9 +1,9 @@
 import sumValue from "./modules/sumValue.js";
 import { modalFn, closeModal } from "./modules/modal.js";
 
-import "./modules/dropdown.js";
-import "./modules/sortTable.js";
-import './modules/dragNDrop.js';
+import dropdown from "./modules/dropdown.js";
+import sortTableFn from "./modules/sortTable.js";
+import dragNDrop from './modules/dragNDrop.js';
 
 window.addEventListener('DOMContentLoaded', () => {
 
@@ -16,7 +16,10 @@ window.addEventListener('DOMContentLoaded', () => {
     const defaultRow = `<td colspan="6" class="table__default">${emptyMessage}</td>`;
 
     modalFn();
-  
+    dropdown();
+    sortTableFn();
+    dragNDrop();
+
     const removeDefaultRow = () => {
         if (tableBody[0] && tableBody[0].innerText === emptyMessage) {
             tableBody[0].remove()
@@ -25,9 +28,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const deleteRow = () => {
         for (let i = 0; i < tableBody.length; i++) {
-            const td = tableBody[i].getElementsByTagName("td")[5];
+            const td = tableBody[i].querySelector('.deleteButton');
             td && td.addEventListener('click', () => {
-                const deletedProductName = td.closest('tr').innerText.split('\t')[0];
+                const deletedProductName = td.closest('tr').cells[0].innerText.trim();
                 td.closest('tr').remove();
                 const localStorageData = localStorage.getItem('tableData');
                 const dataArray = JSON.parse(localStorageData);
@@ -47,12 +50,17 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const formData = (data) => {
         const myHtmlContent = `
-            <td>${data.name}</td>
+            <td>
+                ${data.name}
+                <img class="editIcon" src='icons/edit.webp' alt='edit' height="15px">
+            </td>
             <td>${data.country}</td>
             <td>${data.quantity}</td>
             <td>${+data.price}</td>
             <td>${+data.quantity * +data.price * 1.25}</td>
-            <td><button class='deleteButton'>Delete</button></td>
+            <td>
+                <button class='deleteButton'>Delete</button>
+            </td>
         `;
         return myHtmlContent;
     };
@@ -89,7 +97,8 @@ window.addEventListener('DOMContentLoaded', () => {
         };
         sumValue();
         deleteRow();
-        closeModal()
+        closeModal();
+        editCell();
     }
     form.addEventListener("submit", addRow);
 
@@ -107,4 +116,45 @@ window.addEventListener('DOMContentLoaded', () => {
         const newRow = table.insertRow(table.rows.length);
         newRow.innerHTML = defaultRow;
     };
+
+
+    const editCell = () => {
+        for (let i = 0; i < tableBody.length; i++) {
+            const td = tableBody[i].querySelector('.editIcon');
+            const tdCell = tableBody[i];
+            td.addEventListener('click', () => {
+                const updatedProductName = td.closest('tr').cells[0].innerText.trim();
+                let div = document.createElement("div");
+                if (!tdCell.cells[0].querySelector('input')) {
+                    div.innerHTML = `
+                        <input class='updateInput' type="text" value='${updatedProductName}' id='updateInput' />
+                        <div><button class='updateButton'>Update</button></div>
+                    `;
+                    tdCell.cells[0].appendChild(div);
+                    const updateButton = document.querySelector('.updateButton');
+                    const updateInput = document.querySelector('.updateInput');
+                    updateButton.addEventListener('click', () => {
+                        tdCell.cells[0].removeChild(div);
+                        tdCell.cells[0].innerHTML = `
+                                ${updateInput.value}
+                                <img class="editIcon" src='icons/edit.webp' alt='edit' height="15px">
+                            `;
+                        const localStorageData = localStorage.getItem('tableData');
+                        const dataArray = JSON.parse(localStorageData);
+                        if (dataArray) {
+                            const restArray = dataArray.filter(item => item.name !== updatedProductName);
+                            const modifiedItem = dataArray.find(item => item.name === updatedProductName);
+                            modifiedItem.name = updateInput.value;
+                            const newArray = [modifiedItem, ...restArray];
+                            localStorage.setItem('tableData', JSON.stringify(newArray));
+                        }
+                    })
+
+                } 
+            })
+        }
+    };
+    editCell()
+
 });
+
