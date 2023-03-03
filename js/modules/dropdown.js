@@ -1,3 +1,5 @@
+import data from '/api/countryList.json' assert {type: 'json'};
+
 const dropdownButton = document.querySelector("#country");
 const search = document.querySelector("#search");
 const dropwownItems = document.querySelectorAll("#dropdown");
@@ -9,6 +11,13 @@ dropdownButton.addEventListener('click', () => {
     dropdownList.classList.toggle("show");
     warning.classList.remove('show-warning');
     warning.classList.add('hide-warning');
+});
+
+data.countries.forEach(item => {
+    let p = document.createElement("p");
+    p.innerHTML = item;
+    dropdownList.append(p);
+
 });
 
 search.addEventListener('keyup', () => {
