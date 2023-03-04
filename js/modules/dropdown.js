@@ -1,10 +1,10 @@
 import { countries } from '/api/countryList.js';
 
 const dropdownButton = document.querySelector("#country");
-const search = document.querySelector("#search");
 const dropwownItems = document.querySelectorAll("#dropdown");
 const dropdownList = document.querySelector("#dropdown");
 const field = document.querySelector('.dropbtn');
+const search = document.querySelector("#search");
 const warning = document.querySelector('#warning');
 
 dropdownButton.addEventListener('click', () => {
@@ -41,7 +41,3 @@ dropwownItems.forEach(element => {
         }
     })
 });
-
-
-
-

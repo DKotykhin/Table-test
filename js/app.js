@@ -27,10 +27,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const deleteRow = () => {
         for (let i = 0; i < tableBody.length; i++) {
-            const td = tableBody[i].querySelector('.deleteButton');
-            td && td.addEventListener('click', () => {
-                const deletedProductName = td.closest('tr').cells[0].innerText.trim();
-                td.closest('tr').remove();
+            const deleteButton = tableBody[i].querySelector('.deleteButton');
+            deleteButton.addEventListener('click', () => {
+                const deletedProductName = tableBody[i].cells[0].innerText.trim();
+                deleteButton.closest('tr').remove();
                 const localStorageData = localStorage.getItem('tableData');
                 const dataArray = JSON.parse(localStorageData);
                 if (dataArray) {
