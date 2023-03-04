@@ -1,5 +1,8 @@
 import sumValue from "./modules/sumValue.js";
+import editCell from "./modules/editCell.js";
+import formRowData from "./modules/formRowData.js";
 import { modalFn, closeModal } from "./modules/modal.js";
+import { constants } from "./modules/_constants.js";
 
 import "./modules/dropdown.js";
 import "./modules/sortTable.js";
@@ -7,18 +10,17 @@ import './modules/dragNDrop.js';
 
 window.addEventListener('DOMContentLoaded', () => {
 
-    const table = document.getElementById('table').getElementsByTagName('tbody')[0];
+    const table = document.querySelector('#table').getElementsByTagName('tbody')[0];
     const tableBody = document.querySelector('.table__body').getElementsByTagName("tr");
     const warning = document.querySelector('#warning');
     const form = document.querySelector("form");
 
-    const emptyMessage = 'There is no products yet';
-    const defaultRow = `<td colspan="6" class="table__default">${emptyMessage}</td>`;
-
+    const defaultRow = `<td colspan="6" class="table__default">${constants.emptyMessage}</td>`;
+  
     modalFn();
 
     const removeDefaultRow = () => {
-        if (tableBody[0] && tableBody[0].innerText === emptyMessage) {
+        if (tableBody[0] && tableBody[0].innerText === constants.emptyMessage) {
             tableBody[0].remove()
         }
     };
@@ -45,23 +47,6 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    const formData = (data) => {
-        const myHtmlContent = `
-            <td>
-                ${data.name}
-                <img class="editIcon" src='icons/edit.webp' alt='edit' height="15px">
-            </td>
-            <td>${data.country}</td>
-            <td>${data.quantity}</td>
-            <td>${+data.price}</td>
-            <td>${+data.quantity * +data.price * 1.25}</td>
-            <td>
-                <button class='deleteButton'>Delete</button>
-            </td>
-        `;
-        return myHtmlContent;
-    };
-
     const addRow = (e) => {
         e.preventDefault();
         const name = document.forms['form']['name'].value;
@@ -79,10 +64,10 @@ window.addEventListener('DOMContentLoaded', () => {
             quantity,
             price,
         };
-        const myHtmlContent = formData(newData);
+        const newRowContent = formRowData(newData);
         removeDefaultRow();
         const newRow = table.insertRow(table.rows.length);
-        newRow.innerHTML = myHtmlContent;
+        newRow.innerHTML = newRowContent;
 
         const localStorageData = localStorage.getItem('tableData');
         if (localStorageData) {
@@ -95,7 +80,9 @@ window.addEventListener('DOMContentLoaded', () => {
         sumValue();
         deleteRow();
         closeModal();
-        editCell();
+        editCell(0);
+        editCell(2);
+        editCell(3);
     }
     form.addEventListener("submit", addRow);
 
@@ -105,7 +92,7 @@ window.addEventListener('DOMContentLoaded', () => {
         removeDefaultRow();
         dataArray.forEach(element => {
             const newRow = table.insertRow(table.rows.length);
-            newRow.innerHTML = formData(element);
+            newRow.innerHTML = formRowData(element);
         });
         sumValue();
         deleteRow();
@@ -114,44 +101,7 @@ window.addEventListener('DOMContentLoaded', () => {
         newRow.innerHTML = defaultRow;
     };
 
-
-    const editCell = () => {
-        for (let i = 0; i < tableBody.length; i++) {
-            const td = tableBody[i].querySelector('.editIcon');
-            const tdCell = tableBody[i];
-            td && td.addEventListener('click', () => {
-                const updatedProductName = td.closest('tr').cells[0].innerText.trim();
-                let div = document.createElement("div");
-                if (!tdCell.cells[0].querySelector('input')) {
-                    div.innerHTML = `
-                        <input class='updateInput' type="text" value='${updatedProductName}' id='updateInput' />
-                        <div><button class='updateButton'>Update</button></div>
-                    `;
-                    tdCell.cells[0].appendChild(div);
-                    const updateButton = document.querySelector('.updateButton');
-                    const updateInput = document.querySelector('.updateInput');
-                    updateButton.addEventListener('click', () => {
-                        tdCell.cells[0].removeChild(div);
-                        tdCell.cells[0].innerHTML = `
-                                ${updateInput.value}
-                                <img class="editIcon" src='icons/edit.webp' alt='edit' height="15px">
-                            `;
-                        const localStorageData = localStorage.getItem('tableData');
-                        const dataArray = JSON.parse(localStorageData);
-                        if (dataArray) {
-                            const restArray = dataArray.filter(item => item.name !== updatedProductName);
-                            const modifiedItem = dataArray.find(item => item.name === updatedProductName);
-                            modifiedItem.name = updateInput.value;
-                            const newArray = [modifiedItem, ...restArray];
-                            localStorage.setItem('tableData', JSON.stringify(newArray));
-                        }
-                    })
-
-                } 
-            })
-        }
-    };
-    editCell()
-
+    editCell(0);
+    editCell(2);
+    editCell(3);
 });
-

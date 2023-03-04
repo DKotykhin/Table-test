@@ -31,24 +31,29 @@ body {
     padding: 5px 15px;
 }
 
-.deleteButton {
-    cursor: pointer;
-    color: #ff0000;
+.tableButton {
+    cursor: pointer; 
     border: 1px solid #808080;
     border-radius: 5px;
     padding: 3px 10px;
 }
-.updateButton {
-    cursor: pointer;
-    color: #008822;
-    border: 1px solid #808080;
-    border-radius: 5px;
-    padding: 3px 10px;
-    margin-bottom: 5px;
+
+.deleteButton {    
+    color: #ff0000;
+}
+.updateButton {    
+    color: #008822;    
+    margin: 5px;
+}
+
+.cancelButton {  
+    color: #4d4d4d;
+    margin: 5px;
 }
 
 .deleteButton:hover,
-.updateButton:hover {
+.updateButton:hover,
+.cancelButton:hover {
     background-color: #cccccc;
 }
 .updateInput {
@@ -98,11 +103,12 @@ table th {
 }
 
 .editIcon {
-    margin-left: 8px;
+    margin-left: 15px;
     opacity: 0.7;
     cursor: pointer;
 }
 
+/* Modal */
 .overlay {
     display: none;
     position: fixed;
@@ -110,6 +116,7 @@ table th {
     height: 100%;
     top: 0;
     background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
 }
 
 .modal {
@@ -172,6 +179,7 @@ input:focus {
 .hide-warning {
     display: none;
 }
+/* Modal */
 
 .total {
     font-size: 1.5rem;

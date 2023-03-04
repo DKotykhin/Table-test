@@ -16,24 +16,24 @@ const sortTable = (n, sortRule) => {
             const y = rows[i + 1].getElementsByTagName("td")[n];
             if (sortRule === 'number') {
                 if (dir == "asc") {
-                    if (Number(x.innerHTML) > Number(y.innerHTML)) {
+                    if (Number(x.innerText) > Number(y.innerText)) {
                         shouldSwitch = true;
                         break;
                     }
                 } else {
-                    if (Number(x.innerHTML) < Number(y.innerHTML)) {
+                    if (Number(x.innerText) < Number(y.innerText)) {
                         shouldSwitch = true;
                         break;
                     }
                 }
             } else {
                 if (dir == "asc") {
-                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                    if (x.innerText.toLowerCase() > y.innerText.toLowerCase()) {
                         shouldSwitch = true;
                         break;
                     }
                 } else {
-                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                    if (x.innerText.toLowerCase() < y.innerText.toLowerCase()) {
                         shouldSwitch = true;
                         break;
                     }

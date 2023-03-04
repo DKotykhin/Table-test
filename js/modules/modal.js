@@ -1,7 +1,6 @@
 
 const addButton = document.querySelector('#addButton');
 const cancelButton = document.querySelector('#cancelButton');
-// const submitButton = document.querySelector('#submitButton');
 const modalClose = document.querySelector('.modal__close');
 const overlay = document.querySelector('.overlay');
 const warning = document.querySelector('#warning');
@@ -28,7 +27,6 @@ export const modalFn = () => {
     addButton.addEventListener('click', () => openModal());
     modalClose.addEventListener('click', () => closeModal());
     cancelButton.addEventListener('click', () => closeModal());
-    // submitButton.addEventListener('click', () => closeModal());
     overlay.addEventListener('click', (e) => {
         if (e.target === overlay) closeModal()
     })
