@@ -4,14 +4,14 @@ import { constants } from "./_constants.js";
 const tableBody = document.querySelector('.table__body').getElementsByTagName("tr");
 
 const editCell = (n) => {
-    for (let i = 0; i < tableBody.length; i++) {
-        const cell = tableBody[i].cells[n];   
+    for (const row of tableBody) {
+        const cell = row.cells[n];
         if (cell) {
-            const editIcon = cell.querySelector('.editIcon');        
+            const editIcon = cell.querySelector('.editIcon');
             if (editIcon) {
-                const updatedValue = cell.innerText.trim();                
-                const updatedProductName = tableBody[i].cells[0].innerText.trim();
-                const updatedPriceWithTax = tableBody[i].cells[4];
+                const updatedValue = cell.innerText.trim();
+                const updatedProductName = row.cells[0].innerText.trim();
+                const updatedPriceWithTax = row.cells[4];
                 editIcon.addEventListener('click', () => {
                     let div = document.createElement("div");
                     cell.innerHTML = '';

@@ -22,13 +22,13 @@ countries.forEach(item => {
 
 search.addEventListener('keyup', () => {
     const filter = search.value.toUpperCase();
-    const p = dropdownList.getElementsByTagName("p");
-    for (let i = 0; i < p.length; i++) {
-        const txtValue = p[i].textContent || p[i].innerText;
+    const pTags = dropdownList.getElementsByTagName("p");
+    for (const p of pTags) {
+        const txtValue = p.textContent || p.innerText;
         if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            p[i].style.display = "";
+            p.style.display = "";
         } else {
-            p[i].style.display = "none";
+            p.style.display = "none";
         }
     }
 });

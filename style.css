@@ -18,6 +18,7 @@ body {
 
 .button:hover {
     background-color: #cccccc;
+    transition: 0.5s;
 }
 
 .addButton {
@@ -55,6 +56,7 @@ body {
 .updateButton:hover,
 .cancelButton:hover {
     background-color: #cccccc;
+    transition: 0.3s;
 }
 .updateInput {
     margin: 10px 0;
@@ -103,9 +105,10 @@ table th {
 }
 
 .editIcon {
-    margin-left: 15px;
     opacity: 0.7;
     cursor: pointer;
+    padding: 5px 10px;
+    float: right;
 }
 
 /* Modal */

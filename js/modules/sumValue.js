@@ -4,8 +4,8 @@ const total = document.querySelector('#total');
 
 const sumValue = () => {
     let sumVal = 0;
-    for (let i = 0; i < table.rows.length; i++) {
-      sumVal = sumVal + parseFloat(table.rows[i].cells[4].innerHTML);
+    for (const row of table.rows) {
+      sumVal = sumVal + parseFloat(row.cells[4].innerHTML);
     }
     total.innerHTML = sumVal;
 };
