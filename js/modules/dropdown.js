@@ -21,11 +21,12 @@ countries.forEach(item => {
 });
 
 search.addEventListener('keyup', () => {
-    const filter = search.value.toUpperCase();
+    const filter = search.value;
+    search.defaultValue = filter;
     const pTags = dropdownList.getElementsByTagName("p");
     for (const p of pTags) {
         const txtValue = p.textContent || p.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        if (txtValue.toUpperCase().indexOf(filter.toUpperCase()) > -1) {
             p.style.display = "";
         } else {
             p.style.display = "none";
