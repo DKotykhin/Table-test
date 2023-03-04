@@ -1,5 +1,5 @@
 
 export const constants = {
     emptyMessage: 'There is no products yet',
-    editIcon: `<img class="editIcon" src='icons/edit.webp' alt='edit' height="15px">`,
+    editIcon: `<i class="fa-regular fa-pen-to-square editIcon"></i>`,
 }

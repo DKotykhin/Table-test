@@ -102,13 +102,16 @@ table th {
 
 .sortIcon {
     margin-left: 5px;
+    font-size: 1rem;
+    opacity: 0.8;
 }
 
 .editIcon {
-    opacity: 0.7;
+    opacity: 0.8;
     cursor: pointer;
-    padding: 5px 10px;
+    padding: 3px 10px;
     float: right;
+    font-size: 1rem;
 }
 
 /* Modal */
