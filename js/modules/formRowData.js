@@ -15,7 +15,7 @@ const formRowData = (data) => {
             ${+data.price}
             ${constants.editIcon}
         </td>
-        <td>${+data.quantity * +data.price * 1.25}</td>
+        <td>${Math.round(parseFloat(+data.quantity * +data.price * 1.25) * 100) / 100}</td>
         <td>
             <button class='tableButton deleteButton'>Delete</button>
         </td>

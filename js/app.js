@@ -13,8 +13,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const table = document.querySelector('#table').getElementsByTagName('tbody')[0];
     const tableBody = document.querySelector('.table__body').getElementsByTagName("tr");
     const warning = document.querySelector('#warning');
-    const form = document.querySelector("form");
-
+  
     const defaultRow = `<td colspan="6" class="table__default">${constants.emptyMessage}</td>`;
 
     modalFn();
@@ -49,11 +48,11 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const addRow = (e) => {
         e.preventDefault();
-        const name = document.forms['form']['name'].value;
-        const quantity = document.forms['form']['quantity'].value;
-        const price = document.forms['form']['price'].value;
+        const name = document.forms.form.name.value;
+        const quantity = document.forms.form.quantity.value;
+        const price = document.forms.form.price.value;
         const country = document.querySelector('#country').innerHTML;
-        if (country === '...') {
+        if (country === '') {
             warning.classList.add('show-warning')
             return
         };
@@ -83,7 +82,7 @@ window.addEventListener('DOMContentLoaded', () => {
         editCell(2);
         editCell(3);
     }
-    form.addEventListener("submit", addRow);
+    document.forms.form.addEventListener("submit", addRow);
 
     const localStorageData = localStorage.getItem('tableData');
     const dataArray = JSON.parse(localStorageData);

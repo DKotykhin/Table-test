@@ -2,7 +2,6 @@ import sumValue from "./sumValue.js";
 import { constants } from "./_constants.js";
 
 const tableBody = document.querySelector('.table__body').getElementsByTagName("tr");
-const table = document.querySelector('#table').getElementsByTagName('tbody')[0];
 
 const editCell = (n) => {
     for (const row of tableBody) {
@@ -60,7 +59,7 @@ const editCell = (n) => {
                                 ${constants.editIcon}
                             `;
                         editCell(n);
-                    })
+                    });                    
                 })
             }
         }

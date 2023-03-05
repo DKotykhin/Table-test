@@ -5,22 +5,21 @@ const modalClose = document.querySelector('.modal__close');
 const overlay = document.querySelector('.overlay');
 const warning = document.querySelector('#warning');
 const dropdownList = document.querySelector("#dropdown");
-const form = document.querySelector("form");
 
 const openModal = () => {
     overlay.style.display = 'block';
     document.body.style.overflow = "hidden";
     warning.classList.remove('show-warning');
-    warning.classList.add('hide-warning');
     dropdownList.classList.remove("show");
+    document.forms.form.name.focus();
 };
 
 export const closeModal = () => {
     overlay.style.display = 'none';
     document.body.style.overflow = "";
     const field = document.querySelector('.dropbtn');
-    field.innerHTML = '...';
-    form.reset();
+    field.innerHTML = '';
+    document.forms.form.reset();
 };
 
 export const modalFn = () => {
@@ -29,5 +28,12 @@ export const modalFn = () => {
     cancelButton.addEventListener('click', () => closeModal());
     overlay.addEventListener('click', (e) => {
         if (e.target === overlay) closeModal()
-    })
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.code === 'Escape') {
+            if (dropdownList.classList.contains('show')) {
+                dropdownList.classList.remove("show");
+            } else closeModal();
+        };
+    });
 };

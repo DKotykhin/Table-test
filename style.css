@@ -39,6 +39,12 @@ body {
     margin: 30px 10px 20px 0;
     padding: 5px 15px;
 }
+#submitButton {
+    color: #008822;
+}
+#cancelButton {
+    color: #4d4d4d;
+}
 
 .tableButton {
     cursor: pointer; 
@@ -185,10 +191,12 @@ input {
     font-size: 1.1rem;
     padding: 5px;
     width: 200px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
 }
 
 input:focus {
-    background-color: var(--light-grey);
+    background-color: #f3f3f3;
 }
 
 .warning {
@@ -220,7 +228,8 @@ input:focus {
 /* Dropdown */
 .dropbtn {
     text-align: left;
-    min-width: 214px;
+    min-width: 213px;
+    min-height: 33px;
     padding: 5px 5px 5px 10px;
     font-size: 1.2rem;
     cursor: pointer;
@@ -229,6 +238,7 @@ input:focus {
     background-position: 190px 12px;
     background-repeat: no-repeat;
     border: 1px solid var(--border-color);
+    border-radius: 5px;
 }
 
 #search {
@@ -245,7 +255,7 @@ input:focus {
 
 #search:focus {
     outline: 1px solid var(--light-grey);
-    background-color: #f6f6f6;
+    background-color: #f3f3f3;
 }
 
 .dropdown {
