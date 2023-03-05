@@ -1,3 +1,11 @@
+:root {
+    --border-color: #808080;
+    --hover-color: #ccc;
+    --warning-color: #ff0000;
+    --light-grey: #ddd;
+    --beige: #faebd7;
+}
+
 body {
     font-family: Nunito, sans-serif;
 }
@@ -12,12 +20,12 @@ body {
 .button {
     font-size: 1.2rem;
     cursor: pointer;
-    border: 2px solid #808080;
+    border: 2px solid var(--border-color);
     border-radius: 10px;
 }
 
 .button:hover {
-    background-color: #cccccc;
+    background-color: var(--hover-color);
     transition: 0.5s;
 }
 
@@ -34,13 +42,13 @@ body {
 
 .tableButton {
     cursor: pointer; 
-    border: 1px solid #808080;
+    border: 1px solid var(--border-color);
     border-radius: 5px;
     padding: 3px 10px;
 }
 
 .deleteButton {    
-    color: #ff0000;
+    color: var(--warning-color);
 }
 .updateButton {    
     color: #008822;    
@@ -55,7 +63,7 @@ body {
 .deleteButton:hover,
 .updateButton:hover,
 .cancelButton:hover {
-    background-color: #cccccc;
+    background-color: var(--hover-color);
     transition: 0.3s;
 }
 .updateInput {
@@ -66,13 +74,19 @@ body {
     display: flex;
     justify-content: end;
 }
+@media (max-width: 796px) {
+    .button-block {
+        justify-content: space-evenly;
+        max-width: 250px;
+    }
+}
 
 table {
     margin: 10px;
 }
 
 table, th, td {
-    border: 2px solid #808080;
+    border: 2px solid var(--border-color);
     padding: 5px 10px;
     font-size: 1.2rem;
     border-collapse: collapse;
@@ -82,9 +96,14 @@ table, th, td {
 table th {
     min-width: 100px;
 }
+@media (max-width: 768px) {
+    table th {
+        min-width: 0;
+    }
+}
 
 .table__row {
-    background-color: antiquewhite;
+    background-color: var(--beige);
 }
 
 .table__body {
@@ -131,7 +150,7 @@ table th {
     left: 50%;
     transform: translate(-50%, -50%);
     max-width: 400px;
-    background-color: antiquewhite;
+    background-color: var(--beige);
     padding: 15px;
     border-radius: 10px;
 }
@@ -141,7 +160,7 @@ table th {
     top: -50px;
     right: -40px;
     font-size: 2.5rem;
-    color: #ff0000;
+    color: var(--warning-color);
     cursor: pointer;
 }
 
@@ -169,22 +188,26 @@ input {
 }
 
 input:focus {
-    background-color: #d4d4d4;
+    background-color: var(--light-grey);
 }
 
 .warning {
-    color: #ff0000;
+    color: var(--warning-color);
     margin: 0;
     text-align: center;
+    display: none;
+    font-size: 1rem;
+}
+@media (max-width: 796px) {
+    .warning {
+        text-align: left;
+    }
 }
 
 .show-warning {
     display: block;
 }
 
-.hide-warning {
-    display: none;
-}
 /* Modal */
 
 .total {
@@ -205,7 +228,7 @@ input:focus {
     background-image: url('icons/dropdown.webp');
     background-position: 190px 12px;
     background-repeat: no-repeat;
-    border: 1px solid #808080;
+    border: 1px solid var(--border-color);
 }
 
 #search {
@@ -216,12 +239,12 @@ input:focus {
     font-size: 16px;
     padding: 14px 20px 12px 45px;
     border: none;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--light-grey);
     width: 100%;
 }
 
 #search:focus {
-    outline: 1px solid #d4d4d4;
+    outline: 1px solid var(--light-grey);
     background-color: #f6f6f6;
 }
 
@@ -240,7 +263,7 @@ input:focus {
     margin-right: 10px;
     background-color: #f6f6f6;
     min-width: 230px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--light-grey);
     z-index: 1;
 }
 
@@ -254,11 +277,10 @@ input:focus {
 }
 
 .dropdown-content p:hover {
-    background-color: #d4d4d4
+    background-color: var(--light-grey);
 }
 
 .show {
     display: block;
 }
-
 /* Dropdown */

@@ -16,7 +16,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector("form");
 
     const defaultRow = `<td colspan="6" class="table__default">${constants.emptyMessage}</td>`;
-  
+
     modalFn();
 
     const removeDefaultRow = () => {
@@ -26,11 +26,11 @@ window.addEventListener('DOMContentLoaded', () => {
     };
 
     const deleteRow = () => {
-        for (const row of tableBody) {
-            const deleteButton = row.querySelector('.deleteButton');
-            deleteButton.addEventListener('click', () => {
-                const deletedProductName = row.cells[0].innerText.trim();
-                deleteButton.closest('tr').remove();
+        table.addEventListener('click', (e) => {
+            if (e.target.closest('.deleteButton')) {
+                const deletedProductName = e.target.closest('tr').cells[0].innerText.trim();
+                console.log(deletedProductName);
+                e.target.closest('tr').remove();
                 const localStorageData = localStorage.getItem('tableData');
                 const dataArray = JSON.parse(localStorageData);
                 if (dataArray) {
@@ -43,8 +43,8 @@ window.addEventListener('DOMContentLoaded', () => {
                     newRow.innerHTML = defaultRow;
                     localStorage.removeItem('tableData');
                 }
-            })
-        }
+            }
+        })
     };
 
     const addRow = (e) => {
@@ -54,7 +54,6 @@ window.addEventListener('DOMContentLoaded', () => {
         const price = document.forms['form']['price'].value;
         const country = document.querySelector('#country').innerHTML;
         if (country === '...') {
-            warning.classList.remove('hide-warning')
             warning.classList.add('show-warning')
             return
         };
