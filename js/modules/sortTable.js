@@ -1,16 +1,16 @@
 const productColumn = document.querySelector("#productColumn");
 const priceColumn = document.querySelector("#priceColumn");
-const table = document.querySelector("#table");
+const table = document.querySelector(".table__body");
 
 const sortTable = (n, sortRule) => {
     let switchcount = 0;
     let switching = true;
     let dir = "asc";
+    const rows = table.rows;
     while (switching) {
         let i, shouldSwitch;
         switching = false;
-        const rows = table.rows;
-        for (i = 1; i < (rows.length - 1); i++) {
+        for (i = 0; i < (rows.length - 1); i++) {
             shouldSwitch = false;
             const x = rows[i].getElementsByTagName("td")[n];
             const y = rows[i + 1].getElementsByTagName("td")[n];

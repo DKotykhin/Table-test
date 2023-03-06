@@ -11,16 +11,15 @@ import './modules/dragNDrop.js';
 window.addEventListener('DOMContentLoaded', () => {
 
     const table = document.querySelector('.table__body');
-    const tableRows = table.getElementsByTagName("tr");
     const warning = document.querySelector('#warning');
-  
+
     const defaultRow = `<td colspan="6" class="table__default">${constants.emptyMessage}</td>`;
 
     modalFn();
 
     const removeDefaultRow = () => {
-        if (tableRows[0] && tableRows[0].innerText === constants.emptyMessage) {
-            tableRows[0].remove()
+        if (table.rows[0] && table.rows[0].innerText === constants.emptyMessage) {
+            table.rows[0].remove()
         }
     };
 
@@ -36,7 +35,7 @@ window.addEventListener('DOMContentLoaded', () => {
                     const newArray = dataArray.filter(item => item.name !== deletedProductName);
                     localStorage.setItem('tableData', JSON.stringify(newArray));
                 }
-                if (tableRows.length === 0) {
+                if (table.rows.length === 0) {
                     const newRow = table.insertRow(table.rows.length);
                     newRow.innerHTML = defaultRow;
                     localStorage.removeItem('tableData');
