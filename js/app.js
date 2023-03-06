@@ -10,8 +10,8 @@ import './modules/dragNDrop.js';
 
 window.addEventListener('DOMContentLoaded', () => {
 
-    const table = document.querySelector('#table').getElementsByTagName('tbody')[0];
-    const tableBody = document.querySelector('.table__body').getElementsByTagName("tr");
+    const table = document.querySelector('.table__body');
+    const tableRows = table.getElementsByTagName("tr");
     const warning = document.querySelector('#warning');
   
     const defaultRow = `<td colspan="6" class="table__default">${constants.emptyMessage}</td>`;
@@ -19,8 +19,8 @@ window.addEventListener('DOMContentLoaded', () => {
     modalFn();
 
     const removeDefaultRow = () => {
-        if (tableBody[0] && tableBody[0].innerText === constants.emptyMessage) {
-            tableBody[0].remove()
+        if (tableRows[0] && tableRows[0].innerText === constants.emptyMessage) {
+            tableRows[0].remove()
         }
     };
 
@@ -28,7 +28,6 @@ window.addEventListener('DOMContentLoaded', () => {
         table.addEventListener('click', (e) => {
             if (e.target.closest('.deleteButton')) {
                 const deletedProductName = e.target.closest('tr').cells[0].innerText.trim();
-                console.log(deletedProductName);
                 e.target.closest('tr').remove();
                 const localStorageData = localStorage.getItem('tableData');
                 const dataArray = JSON.parse(localStorageData);
@@ -37,7 +36,7 @@ window.addEventListener('DOMContentLoaded', () => {
                     const newArray = dataArray.filter(item => item.name !== deletedProductName);
                     localStorage.setItem('tableData', JSON.stringify(newArray));
                 }
-                if (tableBody.length === 0) {
+                if (tableRows.length === 0) {
                     const newRow = table.insertRow(table.rows.length);
                     newRow.innerHTML = defaultRow;
                     localStorage.removeItem('tableData');

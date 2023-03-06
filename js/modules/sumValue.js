@@ -1,5 +1,5 @@
 
-const table = document.getElementById('table').getElementsByTagName('tbody')[0];
+const table = document.querySelector('.table__body');
 const total = document.querySelector('#total');
 
 const sumValue = () => {

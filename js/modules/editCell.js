@@ -1,7 +1,7 @@
 import sumValue from "./sumValue.js";
 import { constants } from "./_constants.js";
 
-const table = document.querySelector('#table').getElementsByTagName('tbody')[0];
+const table = document.querySelector('.table__body');
 
 const editCell = () => {
     table.addEventListener('click', (e) => {
