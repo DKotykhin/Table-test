@@ -78,9 +78,6 @@ window.addEventListener('DOMContentLoaded', () => {
         sumValue();
         deleteRow();
         closeModal();
-        editCell(0);
-        editCell(2);
-        editCell(3);
     }
     document.forms.form.addEventListener("submit", addRow);
 
@@ -98,8 +95,5 @@ window.addEventListener('DOMContentLoaded', () => {
         const newRow = table.insertRow(table.rows.length);
         newRow.innerHTML = defaultRow;
     };
-
-    editCell(0);
-    editCell(2);
-    editCell(3);
+    editCell();
 });

@@ -221,9 +221,11 @@ input:focus {
 .total {
     font-size: 1.5rem;
     margin: 20px;
+    font-weight: 500;
+}
+.total span {
     font-weight: 700;
 }
-
 
 /* Dropdown */
 .dropbtn {
